@@ -18,12 +18,8 @@ git clone https://github.com/IntAlgambra/frpolls.git
 
 2. Переходим в папку проекта и создаем файл с переменными окружения .frtest.env
 
-```
-cd candyapi
-touch .candyapi.env
-```
 
-3. Прописываем в .candyapi.env необходимые переменные окружения
+3. Прописываем в .frtest.env необходимые переменные окружения
 
 ```
 DJANGO_SECRET_KEY=секретный ключ приложения Джанго
