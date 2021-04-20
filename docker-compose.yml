@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: 
+      - .frtest.env
+    restart: unless-stopped
+  redis:
+      image: redis
+  backend:
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./frtest:/usr/src/frtest/frtest
+    environment:
+      DJANGO_DATABASE_HOST: db
+      DJANGO_REDIS_HOST: redis
+    env_file:
+      - .frtest.env
+    depends_on:
+      - db
+      - redis
+    ports: 
+      - 8000:8000
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

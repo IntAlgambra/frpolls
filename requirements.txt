@@ -1,0 +1,6 @@
+Django==2.2.10
+djangorestframework
+psycopg2-binary
+redis
+PyJWT
+django-extensions
